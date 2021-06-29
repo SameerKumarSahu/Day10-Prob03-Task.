@@ -80,3 +80,98 @@ echo "Percentage of HH occuring is " $c "%"
 echo "Percentage of HT occuring is " $d "%"
 echo "Percentage of TH occuring is " $e "%"
 echo "Percentage of TT occuring is " $f "%"
+
+
+
+declare -A Dicti
+
+HHH=0
+HHT=0
+HTH=0
+HTT=0
+THH=0
+THT=0
+TTH=0
+TTT=0
+
+for (( i=1; i<=10; i++ ))
+do
+ dice1=$(( RANDOM%2 ))
+ dice2=$(( RANDOM%2 ))
+ dice3=$(( RANDOM%2 ))
+
+	if [ $dice1 -eq 0 ] && [ $dice2 -eq 0 ] && [ $dice3 -eq 0 ]
+
+        then
+                Dicti[face1]="HHH"
+		((HHH++))
+        elif [ $dice1 -eq 0 ] && [ $dice2 -eq 0 ] && [ $dice3 -eq 1 ]
+
+
+	then
+                Dicti[face2]="HHT"
+		 ((HHT++))
+
+	elif [ $dice1 -eq 0 ] && [ $dice2 -eq 1 ] && [ $dice3 -eq 0 ]
+
+
+	then
+                Dicti[face3]="HTH"
+		 ((HTH++))
+
+	elif [ $dice1 -eq 0 ] && [ $dice2 -eq 1 ] && [ $dice3 -eq 1 ]
+
+
+        then
+                Dicti[face4]="HTT"
+		 ((HTT++))
+
+	elif [ $dice1 -eq 1 ] && [ $dice2 -eq 0 ] && [ $dice3 -eq 0 ]
+
+
+        then
+                Dicti[face5]="THH"
+		 ((THH++))
+
+	elif [ $dice1 -eq 1 ] && [ $dice2 -eq 0 ] && [ $dice3 -eq 1 ]
+
+
+        then
+                Dicti[face6]="THT"
+		 ((THT++))
+
+	elif [ $dice1 -eq 1 ] && [ $dice2 -eq 1 ] && [ $dice3 -eq 0 ]
+
+
+        then
+                Dicti[face7]="TTH"
+		 ((TTH++))
+
+
+	else
+                Dicti[face8]="TTT"
+		 ((TTT++))
+
+
+
+        fi
+done
+echo "${Dicti[@]}"
+g=$(($HHH * 10))
+h=$(($HHT * 10))
+i=$(($HTH * 10))
+j=$(($HTT * 10))
+k=$(($THH * 10))
+l=$(($THT * 10))
+m=$(($TTH * 10))
+n=$(($TTT * 10))
+
+
+echo "Percentage of HHH occuring is " $g "%"
+echo "Percentage of HHT occuring is " $h "%"
+echo "Percentage of HTH occuring is " $i "%"
+echo "Percentage of HTT occuring is " $j "%"
+echo "Percentage of THH occuring is " $k "%"
+echo "Percentage of THT occuring is " $l "%"
+echo "Percentage of TTH occuring is " $m "%"
+echo "Percentage of TTT occuring is " $n "%"
